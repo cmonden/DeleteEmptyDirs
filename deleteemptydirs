@@ -1,0 +1,14 @@
+import os
+import shutil
+
+
+def remove_empty_folders(path_abs):
+    walk = list(os.walk(path_abs))
+    for path, _, _ in walk[::-1]:
+        if len(os.listdir(path)) == 0:
+            #os.remove(path)
+            shutil.rmtree(path, ignore_errors = True)
+
+if __name__ == '__main__':
+    yourpath = input("Enter path:")
+    remove_empty_folders(yourpath)
